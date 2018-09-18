@@ -115,12 +115,10 @@ main {
   }
 
   &__content {
-    background: $color-grey-light-2;
-    padding: 6rem;
+    min-height: 300px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-
+    justify-content: center;
+    background: $color-grey-light-2;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
@@ -144,5 +142,11 @@ main {
         margin-bottom: 1rem;
       }
     }
+  }
+
+  &-item {
+    padding: 6rem;
+    display: flex;
+    align-items: center;
   }
 }
