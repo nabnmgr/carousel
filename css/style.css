@@ -30,6 +30,18 @@ a {
   text-decoration: none;
   color: #f5f5f5; }
 
+.dot {
+  height: 12px;
+  width: 12px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 0.4rem; }
+
+.dot.active {
+  background-color: #f48221; }
+
 header {
   background: #f48221;
   padding: 1.5rem 3rem; }
@@ -66,6 +78,7 @@ main {
     background: #efefef; }
     .carousel__nav .icon {
       color: #332f2e;
+      cursor: pointer;
       transition: 0.2s; }
     .carousel__nav .icon:hover {
       color: #555; }
@@ -92,4 +105,14 @@ main {
   .carousel-item {
     padding: 6rem;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    animation-name: slideIn;
+    animation-duration: 1s; }
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100px);
+    opacity: 0; }
+  100% {
+    transform: translateX(0);
+    opacity: 1; } }
