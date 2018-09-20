@@ -127,6 +127,20 @@ main {
     .icon:hover {
       color: $color-black-2;
     }
+
+    &-left.active,
+    &-right.active {
+      transform: scale(1.4);
+      transition: 0.2s;
+    }
+
+    &-left.active {
+      transform: translateX(-10px);
+    }
+
+    &-right.active {
+      transform: translateX(10px);
+    }
   }
 
   &__content {
@@ -137,6 +151,13 @@ main {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    user-select: none;
+
+    &.active {
+      background: $color-grey-light-1;
+      opacity: 0.7;
+      transition: 0.3s;
+    }
 
     p {
       color: $color-black-2;
@@ -163,19 +184,20 @@ main {
     padding: 6rem;
     display: flex;
     align-items: center;
+    cursor: pointer;
     animation-name: slideIn;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
   }
 }
 
 @keyframes slideIn {
   0% {
-    transform: translateX(100px);
+    transform: translateY(40px);
     opacity: 0;
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }

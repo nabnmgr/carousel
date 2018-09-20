@@ -1,7 +1,3 @@
-// el
-// methods: prev, next, goTo
-// options: autoplay, duration, pagination, arrow
-
 class Carousel {
   constructor(el) {
     this.el = el;
@@ -59,8 +55,11 @@ class Carousel {
   }
 }
 
-let carousel = new Carousel(document.querySelector('.carousel__content'));
+const content = document.querySelector('.carousel__content');
+let carousel = new Carousel(content);
 carousel.init();
+
+// BUTTONS
 
 let prevBtn = document.querySelector('.carousel__nav-left');
 let nextBtn = document.querySelector('.carousel__nav-right');
@@ -68,11 +67,60 @@ let nextBtn = document.querySelector('.carousel__nav-right');
 prevBtn.addEventListener('click', () => carousel.prev());
 nextBtn.addEventListener('click', () => carousel.next());
 
+// DOT PAGINATION
+
 let pagination = document.querySelector('.carousel__nav-paginate');
 
 pagination.addEventListener('click', e => {
   if (e.target.matches('.dot')) {
     let index = parseInt(e.target.getAttribute('data-index'));
     carousel.goTo(index);
+  }
+});
+
+// BASIC DRAG
+
+let isDown = false;
+let startX;
+let endX;
+
+content.addEventListener('mousedown', e => {
+  isDown = true;
+  startX = e.pageX - content.offsetLeft;
+  content.classList.add('active');
+});
+
+content.addEventListener('mouseleave', e => {
+  e.preventDefault();
+  isDown = false;
+
+  content.classList.remove('active');
+});
+
+content.addEventListener('mouseup', e => {
+  isDown = false;
+
+  content.classList.remove('active');
+  prevBtn.classList.remove('active');
+  nextBtn.classList.remove('active');
+
+  if (newX > startX) {
+    carousel.prev();
+  } else if (newX < startX) {
+    carousel.next();
+  }
+});
+
+content.addEventListener('mousemove', e => {
+  newX = e.pageX - content.offsetLeft;
+  e.preventDefault();
+
+  if (!isDown) return;
+  if (newX > startX) {
+    prevBtn.classList.add('active');
+    nextBtn.classList.remove('active');
+  } else if (newX < startX) {
+    nextBtn.classList.add('active');
+    prevBtn.classList.remove('active');
   }
 });
