@@ -104,22 +104,22 @@ content.addEventListener('mouseup', e => {
   prevBtn.classList.remove('active');
   nextBtn.classList.remove('active');
 
-  if (newX > startX) {
+  if (endX > startX) {
     carousel.prev();
-  } else if (newX < startX) {
+  } else if (endX < startX) {
     carousel.next();
   }
 });
 
 content.addEventListener('mousemove', e => {
-  newX = e.pageX - content.offsetLeft;
+  endX = e.pageX - content.offsetLeft;
   e.preventDefault();
 
   if (!isDown) return;
-  if (newX > startX) {
+  if (endX > startX) {
     prevBtn.classList.add('active');
     nextBtn.classList.remove('active');
-  } else if (newX < startX) {
+  } else if (endX < startX) {
     nextBtn.classList.add('active');
     prevBtn.classList.remove('active');
   }

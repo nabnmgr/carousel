@@ -11,6 +11,9 @@ $color-grey-dark-1: #efefef;
 $color-black-1: #332f2e;
 $color-black-2: #555;
 
+$bp-tab-port: 700px;
+$bp-tab-small: 600px;
+
 ///////////////////////////
 // RESETS
 //////////////////////////
@@ -96,6 +99,14 @@ header {
 //////////////////////////
 main {
   margin: 6rem;
+
+  @media only screen and (max-width: $bp-tab-port) {
+    margin: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-tab-small) {
+    margin: 4rem 0;
+  }
 }
 
 .carousel {
@@ -173,6 +184,11 @@ main {
       border-left: 1px solid #ccc;
       padding: 0 3rem;
 
+      @media only screen and (max-width: $bp-tab-small) {
+        border-left: 0;
+        padding: 1rem;
+      }
+
       h3 {
         font-size: 2rem;
         margin-bottom: 1rem;
@@ -187,6 +203,15 @@ main {
     cursor: pointer;
     animation-name: slideIn;
     animation-duration: 0.8s;
+
+    @media only screen and (max-width: $bp-tab-port) {
+      padding: 4rem;
+    }
+
+    @media only screen and (max-width: $bp-tab-small) {
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 }
 
